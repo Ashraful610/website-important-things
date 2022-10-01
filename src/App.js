@@ -1,18 +1,14 @@
 import './App.css';
 import { useEffect } from 'react'
 import PageInation from './Component/Page/PageInation';
+import HookForm from './Component/HookForm/HookForm';
 
 
 function App() {
-  const num = 5
-   
-  useEffect(() => {
-    
- },[])
-
-  return (
+   return (
     <div >
-        <PageInation />
+        {/* <PageInation /> */}
+        <HookForm></HookForm>
     </div>
   );
 }
