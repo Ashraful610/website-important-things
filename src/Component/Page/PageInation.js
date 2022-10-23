@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Page from "./Page";
 
 const PageInation = () => {
-    const [items , setItems] = useState([])
+  const [items , setItems] = useState([])
   const [pages, setPages] = useState(0);
   const [page, setPage] = useState(0);
 
