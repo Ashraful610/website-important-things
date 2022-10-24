@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
+import Loading from "../Loading/Loading";
 
 const HookForm = () => {
   const {
@@ -11,20 +13,32 @@ const HookForm = () => {
 
   const onSubmit = (data) =>{
     const img = data.photo[0]
-    const formData = new FormData();
-    formData.append('image', img);
-    
-     const imgUploadKey = 'a35dd26dcd6217863e04026e8ac764ee'
-     const url = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
-    fetch(url, {
-      method: 'POST',
-      body: formData
+    const formData = new FormData()
+    formData.append('image', img)
+    const imgBBAPIKey = 'a35dd26dcd6217863e04026e8ac764ee'
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imgBBAPIKey}`
+    fetch(url , {method:'POST',body:formData})
+    .then(response => response.json())
+    .then(result => {
+      if(result?.data.url){
+        const user = {name:data.firstName ,email:data.email ,photo:result?.data.url }
+        fetch('http://localhost:5000/user',{
+          method:'POST',
+          body:JSON.stringify(user) , 
+          headers:{ 
+          'Content-type': 'application/json; charset=UTF-8'
+         }})
+        .then(res => res.json())
+        .then(result => {
+           if(!result?.insertedId){
+            return <Loading></Loading>
+           }
+           else if(result?.insertedId){
+            toast.success('Successfully add a user')
+           }
+        })
+      }
     })
-   .then((response) => response.json())
-   .then((result) => {
-    console.log('Success:', result.data.url);
-  })
-
   };
 
   return (
@@ -156,7 +170,7 @@ const HookForm = () => {
               </div>
              
           </div>
-          <input type="submit" className="uppercase w-[120px] bg-pink-600 px-5 py-2 text-white rounded " />
+          <input type="submit" className="uppercase w-[120px] bg-pink-600 px-5 py-2 text-white rounded"/>
         </form>
       </div>
     </div>

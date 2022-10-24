@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../Loading/Loading";
 import Page from "./Page";
 
 const PageInation = () => {
@@ -21,6 +22,10 @@ const PageInation = () => {
         setPages(page);
       });
   }, [pages]);
+
+  if(!items){
+    return <Loading></Loading>
+  }
 
   return (
     <div className="p-20">
