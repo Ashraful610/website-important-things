@@ -1,5 +1,4 @@
 import './App.css';
-import { useEffect } from 'react'
 import PageInation from './Component/Page/PageInation';
 import HookForm from './Component/HookForm/HookForm';
 import { Toaster } from 'react-hot-toast';

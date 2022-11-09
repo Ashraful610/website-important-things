@@ -17,6 +17,7 @@ const HookForm = () => {
     formData.append('image', img)
     const imgBBAPIKey = 'a35dd26dcd6217863e04026e8ac764ee'
     const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imgBBAPIKey}`
+    
     fetch(url , {method:'POST',body:formData})
     .then(response => response.json())
     .then(result => {
