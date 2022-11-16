@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import DynamicTitle from "../DynamicTitle/DynamicTitle";
 import Loading from "../Loading/Loading";
 import Page from "./Page";
 
@@ -29,6 +30,7 @@ const PageInation = () => {
 
   return (
     <div className="p-20">
+      <DynamicTitle title='Page Ination' />
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead>

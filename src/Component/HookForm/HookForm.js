@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
+import DynamicTitle from "../DynamicTitle/DynamicTitle";
 import Loading from "../Loading/Loading";
 
 const HookForm = () => {
@@ -44,6 +45,7 @@ const HookForm = () => {
 
   return (
     <div className="p-5 bg-slate-100  min-h-screen h-fit flex items-center">
+      <DynamicTitle title='Hook Form' />
       <div className="w-[70%] min-h-fit mx-auto bg-slate-200 rounded p-5">
         <h2 className="text-3xl font-semibold font-serif text-pink-500 text-center uppercase">
           hook form

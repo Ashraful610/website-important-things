@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import DynamicTitle from '../DynamicTitle/DynamicTitle';
 
 const Users = () => {
     const [users , setUsers] = useState([])
@@ -12,6 +13,7 @@ const Users = () => {
     return (
         <div className='p-5'>
             <div className='grid grid-cols-3 gap-5'>
+                <DynamicTitle title='Upload user Img' />
                 {
                     users?.map(user => 
                     <div key={user._id} className='bg-blue-400 text-white p-5'> 
